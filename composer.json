@@ -1,0 +1,31 @@
+{
+    "name": "altelma/laravel-hydra",
+    "description": "Hydra API client for Laravel",
+    "type": "library",
+    "keywords": [
+        "laravel",
+        "php",
+        "sdk",
+        "rest",
+        "api",
+        "ory",
+        "hydra",
+        "oauth",
+        "openid"
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.4"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ALTELMA",
+            "email": "nrohtgnohp@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Altelma\\LaravelHydra\\": "src/"
+        }
+    }
+}
