@@ -3,6 +3,8 @@ Laravel Hydra is a package that provides Client API for Hydra support Laravel an
 
 ![Laravel Hydra Cover](https://user-images.githubusercontent.com/4938568/153674325-d98af9de-cd43-46de-a4ca-34b1b5935aa2.jpg)
 
+## What is Hydra?
+Hydra is an OAuth 2.0 and OpenID Connect Provider. In other words, an implementation of the OAuth 2.0 Authorization Framework as well as the OpenID Connect Core 1.0 framework. As such, it issues OAuth 2.0 Access, Refresh, and ID Tokens that enable third-parties to access your APIs in the name of your users.
 
 ## Inspiration ❤️❤️❤️
 This is not the official Ory Hydra SDK for php.
