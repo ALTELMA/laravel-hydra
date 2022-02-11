@@ -27,5 +27,12 @@
         "psr-4": {
             "Altelma\\LaravelHydra\\": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Altelma\\LaravelHydra\\LaravelHydraServiceProvider"
+            ]
+        }
     }
 }

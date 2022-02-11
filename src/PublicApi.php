@@ -66,9 +66,11 @@ class PublicApi
      *
      * @throws GuzzleException
      */
-    public function oauth2Token(array $params): object {
+    public function oauth2Token(array $params): object
+    {
         $response = $this->client->post(
-            $this->baseUrl . '/oauth2/token', [
+            $this->baseUrl . '/oauth2/token',
+            [
                 'form_params' => $params
             ]
         );
@@ -88,7 +90,8 @@ class PublicApi
     public function revokeOAuth2Token(string $token): object
     {
         $response = $this->client->post(
-            $this->baseUrl . '/oauth2/revoke', [
+            $this->baseUrl . '/oauth2/revoke',
+            [
                 'form_params' => [
                     'token' => $token
                 ]
@@ -109,7 +112,8 @@ class PublicApi
     public function userinfo(string $token): object
     {
         $response = $this->client->get(
-            $this->baseUrl . '/userinfo', [
+            $this->baseUrl . '/userinfo',
+            [
                 'headers' => [
                     'Accept' => 'application/json',
                     'Authorization' => 'Bearer ' . $token,

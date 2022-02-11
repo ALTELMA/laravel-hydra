@@ -42,7 +42,8 @@ class AdminApi
     public function createOAuth2Client(array $params): object
     {
         $response = $this->client->post(
-            $this->baseUrl . '/clients', [
+            $this->baseUrl . '/clients',
+            [
                 'json' => $params,
             ]
         );
@@ -79,7 +80,8 @@ class AdminApi
     public function updateOAuth2Client(string $clientId, array $params): object
     {
         $response = $this->client->put(
-            $this->baseUrl . '/clients/' . $clientId, [
+            $this->baseUrl . '/clients/' . $clientId,
+            [
                 'json' => $params,
             ]
         );
@@ -100,7 +102,8 @@ class AdminApi
     public function patchOAuth2Client(string $clientId, array $params): object
     {
         $response = $this->client->patch(
-            $this->baseUrl . '/clients/' . $clientId, [
+            $this->baseUrl . '/clients/' . $clientId,
+            [
                 'json' => [
                     [
                         'from' => $params['from'],
@@ -139,7 +142,8 @@ class AdminApi
     public function getLoginRequest(string $loginChallenge): object
     {
         $response = $this->client->get(
-            $this->baseUrl . '/oauth2/auth/requests/login', [
+            $this->baseUrl . '/oauth2/auth/requests/login',
+            [
                 'query' => [
                     'login_challenge' => $loginChallenge,
                 ]
@@ -162,7 +166,8 @@ class AdminApi
     public function acceptLoginRequest(string $loginChallenge, array $params): object
     {
         $response = $this->client->put(
-            $this->baseUrl . '/oauth2/auth/requests/login/accept', [
+            $this->baseUrl . '/oauth2/auth/requests/login/accept',
+            [
                 'query' => [
                     'login_challenge' => $loginChallenge,
                 ],
@@ -186,7 +191,8 @@ class AdminApi
     public function rejectLoginRequest(string $loginChallenge, array $params): object
     {
         $response = $this->client->put(
-            $this->baseUrl . '/oauth2/auth/requests/login/reject', [
+            $this->baseUrl . '/oauth2/auth/requests/login/reject',
+            [
                 'query' => [
                     'login_challenge' => $loginChallenge,
                 ],
@@ -209,7 +215,8 @@ class AdminApi
     public function getConsentRequest(string $consentChallenge): object
     {
         $response = $this->client->get(
-            $this->baseUrl . '/oauth2/auth/requests/consent', [
+            $this->baseUrl . '/oauth2/auth/requests/consent',
+            [
                 'query' => [
                     'consent_challenge' => $consentChallenge,
                 ]
@@ -232,7 +239,8 @@ class AdminApi
     public function acceptConsentRequest(string $consentChallenge, array $params): object
     {
         $response = $this->client->put(
-            $this->baseUrl . '/oauth2/auth/requests/consent/accept', [
+            $this->baseUrl . '/oauth2/auth/requests/consent/accept',
+            [
                 'query' => [
                     'consent_challenge' => $consentChallenge,
                 ],
@@ -256,7 +264,8 @@ class AdminApi
     public function rejectConsentRequest(string $consentChallenge, array $params): object
     {
         $response = $this->client->put(
-            $this->baseUrl . '/oauth2/auth/requests/consent/reject', [
+            $this->baseUrl . '/oauth2/auth/requests/consent/reject',
+            [
                 'query' => [
                     'consent_challenge' => $consentChallenge,
                 ],
@@ -279,7 +288,8 @@ class AdminApi
     public function getLogoutRequest(string $logoutChallenge): object
     {
         $response = $this->client->get(
-            $this->baseUrl . '/oauth2/auth/requests/logout', [
+            $this->baseUrl . '/oauth2/auth/requests/logout',
+            [
                 'query' => [
                     'logout_challenge' => $logoutChallenge,
                 ]
@@ -302,7 +312,8 @@ class AdminApi
     public function acceptLogoutRequest(string $logoutChallenge, array $params): object
     {
         $response = $this->client->put(
-            $this->baseUrl . '/oauth2/auth/requests/logout/accept', [
+            $this->baseUrl . '/oauth2/auth/requests/logout/accept',
+            [
                 'query' => [
                     'logout_challenge' => $logoutChallenge,
                 ],
@@ -326,7 +337,8 @@ class AdminApi
     public function rejectLogoutRequest(string $logoutChallenge, array $params): object
     {
         $response = $this->client->put(
-            $this->baseUrl . '/oauth2/auth/requests/logout/reject', [
+            $this->baseUrl . '/oauth2/auth/requests/logout/reject',
+            [
                 'query' => [
                     'logout_challenge' => $logoutChallenge,
                 ],
@@ -349,7 +361,8 @@ class AdminApi
     public function introspectOAuth2Token(string $token): object
     {
         $response = $this->client->post(
-            $this->baseUrl . '/oauth2/introspect', [
+            $this->baseUrl . '/oauth2/introspect',
+            [
                 'form_params' => [
                     'token' => $token,
                 ],
@@ -371,7 +384,8 @@ class AdminApi
     public function deleteOAuth2Token(string $clientId): object
     {
         $response = $this->client->delete(
-            $this->baseUrl . '/oauth2/tokens', [
+            $this->baseUrl . '/oauth2/tokens',
+            [
                 'query' => [
                     'client_id' => $clientId,
                 ],
@@ -393,7 +407,8 @@ class AdminApi
     public function listSubjectConsentSessions(string $subject): array
     {
         $response = $this->client->get(
-            $this->baseUrl . '/oauth2/auth/sessions/consent', [
+            $this->baseUrl . '/oauth2/auth/sessions/consent',
+            [
                 'query' => [
                     'subject' => $subject,
                 ],
@@ -413,7 +428,8 @@ class AdminApi
     public function revokeConsentSessions(array $params)
     {
         $this->client->delete(
-            $this->baseUrl . '/oauth2/auth/sessions/consent', [
+            $this->baseUrl . '/oauth2/auth/sessions/consent',
+            [
                 'query' => http_build_query($params),
             ]
         );
@@ -429,7 +445,8 @@ class AdminApi
     public function revokeAuthenticationSession(string $subject)
     {
         $this->client->delete(
-            $this->baseUrl . '/oauth2/auth/sessions/login', [
+            $this->baseUrl . '/oauth2/auth/sessions/login',
+            [
                 'query' => [
                     'subject' => $subject,
                 ],
@@ -449,7 +466,8 @@ class AdminApi
     public function flushInactiveOAuth2Tokens(string $notAfter): object
     {
         $response = $this->client->post(
-            $this->baseUrl . '/oauth2/flush', [
+            $this->baseUrl . '/oauth2/flush',
+            [
                 'json' => [
                     'notAfter' => $notAfter,
                 ],
@@ -488,7 +506,8 @@ class AdminApi
     public function updateJsonWebKeySet(string $set, array $params): object
     {
         $response = $this->client->put(
-            $this->baseUrl . '/keys/' . $set, [
+            $this->baseUrl . '/keys/' . $set,
+            [
                 'json' => $params
             ]
         );
@@ -511,7 +530,8 @@ class AdminApi
     public function createJsonWebKeySet(string $set, string $alg, string $kid, string $use): object
     {
         $response = $this->client->post(
-            $this->baseUrl . '/keys/' . $set, [
+            $this->baseUrl . '/keys/' . $set,
+            [
                 'json' => [
                     'alg' => $alg,
                     'kid' => $kid,
@@ -549,7 +569,8 @@ class AdminApi
     public function getJsonWebKeySet(string $set, string $kid, array $params): object
     {
         $response = $this->client->get(
-            $this->baseUrl . '/keys/' . $set . '/' . $kid, [
+            $this->baseUrl . '/keys/' . $set . '/' . $kid,
+            [
                 'json' => $params
             ]
         );
@@ -571,7 +592,8 @@ class AdminApi
     public function updateJsonWebKey(string $set, string $kid, array $params): object
     {
         $response = $this->client->put(
-            $this->baseUrl . '/keys/' . $set . '/' . $kid, [
+            $this->baseUrl . '/keys/' . $set . '/' . $kid,
+            [
                 'json' => $params
             ]
         );
