@@ -1,4 +1,6 @@
 # Laravel Hydra
+[![Total Downloads](https://poser.pugx.org/ALTELMA/laravel-hydra/d/total.svg)](https://packagist.org/packages/altelma/laravel-hydra)
+
 Laravel Hydra is a package that provides Client API for Hydra support Laravel and following the newest of PHP version.
 
 ![Laravel Hydra Cover](https://user-images.githubusercontent.com/4938568/153674325-d98af9de-cd43-46de-a4ca-34b1b5935aa2.jpg)
