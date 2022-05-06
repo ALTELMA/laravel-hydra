@@ -303,21 +303,18 @@ class AdminApi
      * Accept a Logout Request
      *
      * @param string $logoutChallenge
-     * @param array $params
      *
      * @return object
      *
      * @throws GuzzleException
      */
-    public function acceptLogoutRequest(string $logoutChallenge, array $params): object
+    public function acceptLogoutRequest(string $logoutChallenge): object
     {
         $response = $this->client->put(
-            $this->baseUrl . '/oauth2/auth/requests/logout/accept',
-            [
+            $this->baseUrl . '/oauth2/auth/requests/logout/accept', [
                 'query' => [
                     'logout_challenge' => $logoutChallenge,
                 ],
-                'json' => $params,
             ]
         );
 
