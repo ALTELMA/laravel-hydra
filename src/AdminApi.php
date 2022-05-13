@@ -134,23 +134,27 @@ class AdminApi
      * Get a Login Request
      *
      * @param string $loginChallenge
-     *
      * @return object
      *
-     * @throws GuzzleException
      */
     public function getLoginRequest(string $loginChallenge): object
     {
-        $response = $this->client->get(
-            $this->baseUrl . '/oauth2/auth/requests/login',
-            [
-                'query' => [
-                    'login_challenge' => $loginChallenge,
+        try {
+            $response = $this->client->get(
+                $this->baseUrl . '/oauth2/auth/requests/login',
+                [
+                    'query' => [
+                        'login_challenge' => $loginChallenge,
+                    ]
                 ]
-            ]
-        );
+            );
 
-        return json_decode($response->getBody());
+            return json_decode($response->getBody());
+        } catch (GuzzleException $exception) {
+            $response = $exception->getResponse();
+
+            return json_decode($response->getBody());
+        }
     }
 
     /**
@@ -158,24 +162,28 @@ class AdminApi
      *
      * @param string $loginChallenge
      * @param array $params
-     *
      * @return object
      *
-     * @throws GuzzleException
      */
     public function acceptLoginRequest(string $loginChallenge, array $params): object
     {
-        $response = $this->client->put(
-            $this->baseUrl . '/oauth2/auth/requests/login/accept',
-            [
-                'query' => [
-                    'login_challenge' => $loginChallenge,
-                ],
-                'json' => $params,
-            ]
-        );
+        try {
+            $response = $this->client->put(
+                $this->baseUrl . '/oauth2/auth/requests/login/accept',
+                [
+                    'query' => [
+                        'login_challenge' => $loginChallenge,
+                    ],
+                    'json' => $params,
+                ]
+            );
 
-        return json_decode($response->getBody());
+            return json_decode($response->getBody());
+        } catch (GuzzleException $exception) {
+            $response = $exception->getResponse();
+
+            return json_decode($response->getBody());
+        }
     }
 
     /**
@@ -183,47 +191,55 @@ class AdminApi
      *
      * @param string $loginChallenge
      * @param array $params
-     *
      * @return object
      *
-     * @throws GuzzleException
      */
     public function rejectLoginRequest(string $loginChallenge, array $params): object
     {
-        $response = $this->client->put(
-            $this->baseUrl . '/oauth2/auth/requests/login/reject',
-            [
-                'query' => [
-                    'login_challenge' => $loginChallenge,
-                ],
-                'json' => $params,
-            ]
-        );
+        try {
+            $response = $this->client->put(
+                $this->baseUrl . '/oauth2/auth/requests/login/reject',
+                [
+                    'query' => [
+                        'login_challenge' => $loginChallenge,
+                    ],
+                    'json' => $params,
+                ]
+            );
 
-        return json_decode($response->getBody());
+            return json_decode($response->getBody());
+        } catch (GuzzleException $exception) {
+            $response = $exception->getResponse();
+
+            return json_decode($response->getBody());
+        }
     }
 
     /**
      * Get Consent Request Information
      *
      * @param string $consentChallenge
-     *
      * @return object
      *
-     * @throws GuzzleException
      */
     public function getConsentRequest(string $consentChallenge): object
     {
-        $response = $this->client->get(
-            $this->baseUrl . '/oauth2/auth/requests/consent',
-            [
-                'query' => [
-                    'consent_challenge' => $consentChallenge,
+        try {
+            $response = $this->client->get(
+                $this->baseUrl . '/oauth2/auth/requests/consent',
+                [
+                    'query' => [
+                        'consent_challenge' => $consentChallenge,
+                    ]
                 ]
-            ]
-        );
+            );
 
-        return json_decode($response->getBody());
+            return json_decode($response->getBody());
+        } catch (GuzzleException $exception) {
+            $response = $exception->getResponse();
+
+            return json_decode($response->getBody());
+        }
     }
 
     /**
@@ -231,24 +247,28 @@ class AdminApi
      *
      * @param string $consentChallenge
      * @param array $params
-     *
      * @return object
      *
-     * @throws GuzzleException
      */
     public function acceptConsentRequest(string $consentChallenge, array $params): object
     {
-        $response = $this->client->put(
-            $this->baseUrl . '/oauth2/auth/requests/consent/accept',
-            [
-                'query' => [
-                    'consent_challenge' => $consentChallenge,
-                ],
-                'json' => $params,
-            ]
-        );
+        try {
+            $response = $this->client->put(
+                $this->baseUrl . '/oauth2/auth/requests/consent/accept',
+                [
+                    'query' => [
+                        'consent_challenge' => $consentChallenge,
+                    ],
+                    'json' => $params,
+                ]
+            );
 
-        return json_decode($response->getBody());
+            return json_decode($response->getBody());
+        } catch (GuzzleException $exception) {
+            $response = $exception->getResponse();
+
+            return json_decode($response->getBody());
+        }
     }
 
     /**
@@ -256,69 +276,82 @@ class AdminApi
      *
      * @param string $consentChallenge
      * @param array $params
-     *
      * @return object
      *
-     * @throws GuzzleException
      */
     public function rejectConsentRequest(string $consentChallenge, array $params): object
     {
-        $response = $this->client->put(
-            $this->baseUrl . '/oauth2/auth/requests/consent/reject',
-            [
-                'query' => [
-                    'consent_challenge' => $consentChallenge,
-                ],
-                'json' => $params,
-            ]
-        );
+        try {
+            $response = $this->client->put(
+                $this->baseUrl . '/oauth2/auth/requests/consent/reject',
+                [
+                    'query' => [
+                        'consent_challenge' => $consentChallenge,
+                    ],
+                    'json' => $params,
+                ]
+            );
 
-        return json_decode($response->getBody());
+            return json_decode($response->getBody());
+        } catch (GuzzleException $exception) {
+            $response = $exception->getResponse();
+
+            return json_decode($response->getBody());
+        }
     }
 
     /**
      * Get a Logout Request
      *
      * @param string $logoutChallenge
-     *
      * @return object
      *
-     * @throws GuzzleException
      */
     public function getLogoutRequest(string $logoutChallenge): object
     {
-        $response = $this->client->get(
-            $this->baseUrl . '/oauth2/auth/requests/logout',
-            [
-                'query' => [
-                    'logout_challenge' => $logoutChallenge,
+        try {
+            $response = $this->client->get(
+                $this->baseUrl . '/oauth2/auth/requests/logout',
+                [
+                    'query' => [
+                        'logout_challenge' => $logoutChallenge,
+                    ]
                 ]
-            ]
-        );
+            );
 
-        return json_decode($response->getBody());
+            return json_decode($response->getBody());
+        } catch (GuzzleException $exception) {
+            $response = $exception->getResponse();
+
+            return json_decode($response->getBody());
+        }
     }
 
     /**
      * Accept a Logout Request
      *
      * @param string $logoutChallenge
-     *
      * @return object
      *
-     * @throws GuzzleException
      */
     public function acceptLogoutRequest(string $logoutChallenge): object
     {
-        $response = $this->client->put(
-            $this->baseUrl . '/oauth2/auth/requests/logout/accept', [
-                'query' => [
-                    'logout_challenge' => $logoutChallenge,
-                ],
-            ]
-        );
+        try {
+            $response = $this->client->put(
+                $this->baseUrl . '/oauth2/auth/requests/logout/accept',
+                [
+                    'query' => [
+                        'logout_challenge' => $logoutChallenge,
+                    ],
+                ]
+            );
 
-        return json_decode($response->getBody());
+            return json_decode($response->getBody());
+        } catch (GuzzleException $exception) {
+            $response = $exception->getResponse();
+
+            return json_decode($response->getBody());
+        }
     }
 
     /**
@@ -326,24 +359,28 @@ class AdminApi
      *
      * @param string $logoutChallenge
      * @param array $params
-     *
      * @return object
      *
-     * @throws GuzzleException
      */
     public function rejectLogoutRequest(string $logoutChallenge, array $params): object
     {
-        $response = $this->client->put(
-            $this->baseUrl . '/oauth2/auth/requests/logout/reject',
-            [
-                'query' => [
-                    'logout_challenge' => $logoutChallenge,
-                ],
-                'json' => $params,
-            ]
-        );
+        try {
+            $response = $this->client->put(
+                $this->baseUrl . '/oauth2/auth/requests/logout/reject',
+                [
+                    'query' => [
+                        'logout_challenge' => $logoutChallenge,
+                    ],
+                    'json' => $params,
+                ]
+            );
 
-        return json_decode($response->getBody());
+            return json_decode($response->getBody());
+        } catch (GuzzleException $exception) {
+            $response = $exception->getResponse();
+
+            return json_decode($response->getBody());
+        }
     }
 
     /**

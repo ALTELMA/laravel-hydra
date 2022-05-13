@@ -1,4 +1,5 @@
 # Laravel Hydra
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/altelma/laravel-hydra.svg?style=flat-square)](https://packagist.org/packages/altelma/laravel-hydra)
 [![Total Downloads](https://poser.pugx.org/ALTELMA/laravel-hydra/d/total.svg)](https://packagist.org/packages/altelma/laravel-hydra)
 
 Laravel Hydra is a package that provides Client API for Hydra support Laravel and following the newest of PHP version.
@@ -18,6 +19,8 @@ composer require altelma/laravel-hydra
 ``
 
 ## Usage
+
+### Create OAuth Client
 ```
 // Create OAuth Client
 $adminApi = new AdminApi();
@@ -39,11 +42,25 @@ $adminApi->createOAuth2Client([
         "code|id_token"
     ],
 ]);
+```
 
+### Token Verification
+```
+// Example in middleware
+public function __construct(private AdminApi $oauthAdminApi)
+{
+}
 
-// Verify Token
-$publicApi = new PublicApi();
-$publicApi->introspectOAuth2Token('your-token');
+public function handle(Request $request, Closure $next)
+{
+    $token = $request->bearerToken();
+    $tokenVerification = $this->oauthAdminApi->introspectOAuth2Token($token)->active;
+    if (!$tokenVerification) {
+        throw new UnauthorizedHttpException('Bearer', 'Invalid access token');
+    }
+
+    return $next($request);
+}
 ```
 
 ## Reference
